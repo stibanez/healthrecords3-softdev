@@ -27,7 +27,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
+  <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -37,18 +37,20 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-	['label' => 'Patient', 'url' => ['/patient/index']],
+      	
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+  	$doctor = common\models\Doctor::findOne(Yii::$app->user->id);
+	$doctorname = $doctor->first_name ." " . $doctor->last_name;
+      	$menuItems[] = ['label' => 'Hospital', 'url' => ['/hospital/index']];
+      	$menuItems[] = ['label' => 'Patient', 'url' => ['/patient/index']];
+      	$menuItems[] = ['label' => 'Register', 'url' => ['/site/signup']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Logout (' . $doctorname . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
@@ -60,21 +62,21 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
-    <div class="container">
+  	
+	<div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-    </div>
+  </div>
 </div>
 
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Powered by Will of God</p>
     </div>
 </footer>
 

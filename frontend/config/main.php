@@ -8,9 +8,16 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => 'HealthLine',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+  	'modules' => [
+    	'gii' => [
+      		'class' => 'yii\gii\Module', //adding gii module
+      		'allowedIPs' => ['127.0.0.1', '::1', '*']  //allowing ip's 
+    	],
+  	],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

@@ -5,17 +5,12 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-
+	&nbsp; &nbsp; &nbsp; <img src="/css/1.jpg" width="1080" height="525"/>
+    <h3> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Your medical history right at your fingertips. Literally.</h3>
     <div class="jumbotron">
-        <h1></h1>
-
-        <h2><p class="lead pull-left">Your medical history right at your fingertips. Literally.</p></h2>
-
-
     </div>
 
     <div class="body-content">
-
         <div class="row">
             <div class="col-lg-4">
                 <h2>Heading</h2>

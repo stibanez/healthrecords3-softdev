@@ -32,7 +32,7 @@ class SiteController extends Controller
         [
         'actions' => ['signup'],
         'allow' => true,
-        'roles' => ['?'],
+        'roles' => ['@'],
         ],
         [
         'actions' => ['logout'],
@@ -160,9 +160,7 @@ class SiteController extends Controller
                 
                 if ($modelB->validate()){
                     $modelB->save(true);
-                    if (Yii::$app->getUser()->login($user)) {
-                        return $this->goHome(); 
-                    }
+                    return $this->goHome(); 
                 }
             }
         }
